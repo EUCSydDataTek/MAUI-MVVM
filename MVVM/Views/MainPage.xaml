@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MVVM.Converters" 
+             xmlns:viewmodels="clr-namespace:MVVM.ViewModels" 
+             x:Class="MVVM.Views.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:AgeFormatConverter x:Key="ageFormatConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout x:DataType="viewmodels:MainPageViewModel"
+                     VerticalOptions="StartAndExpand" 
+                     Margin="20" >
+            <Picker Title="Pick a Person"  
+                    ItemsSource="{Binding Persons}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding PersonSelectedItem}"  />
+            <Entry Text="{Binding Name}" 
+                   Placeholder="Name" />
+            <Entry Text="{Binding Age, Converter={StaticResource ageFormatConverter}}" 
+                   Placeholder="Age"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
