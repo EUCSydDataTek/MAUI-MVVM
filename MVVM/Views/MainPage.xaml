@@ -12,18 +12,43 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout x:DataType="viewmodels:MainPageViewModel"
-                     VerticalOptions="StartAndExpand" 
-                     Margin="20" >
+        <VerticalStackLayout x:DataType="viewmodels:MainPageViewModel" 
+                             Margin="20" >
             <Picker Title="Pick a Person"  
                     ItemsSource="{Binding Persons}"
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding PersonSelectedItem}"  />
             <Entry Text="{Binding Name}" 
                    Placeholder="Name" />
-            <Entry Text="{Binding Age, Converter={StaticResource ageFormatConverter}}" 
+            <Entry Text="{Binding Age, Converter={StaticResource ageFormatConverter}}"
                    Placeholder="Age"/>
-        </StackLayout>
+
+            <Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="*,*" 
+                  RowSpacing="10" ColumnSpacing="10">
+
+                <Button Text="Clear" Command="{Binding ClearEntriesCommand}"
+                        Grid.Row="0" Grid.Column="0"/>
+
+                <Button Text="Save New Person" 
+                        Command="{Binding AddCommand}" 
+                        Grid.Row="0" Grid.Column="1"/>
+
+                <Button Text="Show Age" Command="{Binding ShowAgeCommand}" 
+                        Grid.Row="1" Grid.Column="0"/>
+
+                <Button Text="Make Older" Command="{Binding MakeOlderCommand}"
+                        Grid.Row="1" Grid.Column="1"/>
+
+                <Button Text="Delete Person" Command="{Binding DeleteCommand}" 
+                        Grid.Row="2" Grid.Column="0"/>
+
+                <Button Text="AnswerToLife" 
+                    Command="{Binding AnswerToLifeCommand}"
+                    CommandParameter="42"
+                    Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>
