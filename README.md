@@ -1,4 +1,9 @@
-﻿using System.ComponentModel;
+# 2.BaseViewModel
+
+Her vises en standard **BaseViewModel**, som kan benyttes i de flerste projekter:
+
+```csharp
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace MVVM.ViewModels;
@@ -41,3 +46,5 @@ public class BaseViewModel : INotifyPropertyChanged
     }
     #endregion
 }
+```
+ 
