@@ -62,11 +62,12 @@ public partial class MainPageViewModel : BaseViewModel
         return Name?.Length > 0 && Age > 0;
     }
 
-    [RelayCommand(CanExecute = nameof(CanShowAge))]
-    private void ShowAge()
-    {
-        Shell.Current.DisplayAlert("AgeButtonClicked", $"{PersonSelectedItem.Name} er {PersonSelectedItem.Age}", "OK");
-    }
+[RelayCommand(CanExecute = nameof(CanShowAge))]
+private void ShowAge()
+{
+    //Shell.Current.DisplayAlert("AgeButtonClicked", $"{PersonSelectedItem.Name} er {PersonSelectedItem.Age}", "OK");
+    MessagingCenter.Send(this, "AgeButtonClicked", PersonSelectedItem);
+}
     private bool CanShowAge()
     {
         return personSelectedItem != null;
@@ -97,7 +98,8 @@ public partial class MainPageViewModel : BaseViewModel
     [RelayCommand]
     private void AnswerToLife(string param)
     {
-        Shell.Current.DisplayAlert("AnswerToLifeClicked", $"{param}", "OK");
+        //Shell.Current.DisplayAlert("AnswerToLifeClicked", $"{param}", "OK");
+        MessagingCenter.Send(this, "AnswerToLifeClicked", param);
     }
     #endregion
 }
