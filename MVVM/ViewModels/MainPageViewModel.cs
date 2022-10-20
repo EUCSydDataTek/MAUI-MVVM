@@ -61,7 +61,7 @@ public class MainPageViewModel : BaseViewModel
         Age = 0;
     }
 
-    // Command with explicit Execute and CanExecute methods
+    // 1. Command with explicit Execute and CanExecute methods
     private Command addCommand;
     public ICommand AddCommand => addCommand ??= new Command(ExecuteAddCommand, CanExecuteAddCommand);
 
@@ -75,13 +75,14 @@ public class MainPageViewModel : BaseViewModel
         return Name?.Length > 0 && Age > 0;
     }
 
-    // 2. Commands with inline methods
+    // 2. Commands with inline Execute method
     private Command showAgeCommand;
     public ICommand ShowAgeCommand => showAgeCommand ??= new Command(
         execute: () => Shell.Current.DisplayAlert("AgeButtonClicked", $"{PersonSelectedItem.Name} er {PersonSelectedItem.Age}", "OK"),
         canExecute: () => _personSelectedItem != null
         );
 
+    // 2. Commands with inline Execute and CanExecute methods
     private Command makeOlderCommand;
     public ICommand MakeOlderCommand => makeOlderCommand ??= new Command(
         execute: () =>
@@ -93,6 +94,7 @@ public class MainPageViewModel : BaseViewModel
         canExecute: () => _personSelectedItem != null
         );
 
+    // 2. Commands with inline Execute and CanExecute methods
     private Command _onDeleteCommand;
     public ICommand DeleteCommand => _onDeleteCommand ??= new Command(
             execute: () => Persons.Remove(_personSelectedItem ?? null),
