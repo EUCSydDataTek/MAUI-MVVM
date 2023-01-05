@@ -1,6 +1,6 @@
 # 2.BaseViewModel
 
-Her vises en standard **BaseViewModel**, som kan benyttes i de flerste projekter:
+Her vises en standard **BaseViewModel**, som kan benyttes i de fleste projekter:
 
 ```csharp
 using System.ComponentModel;
