@@ -69,28 +69,28 @@ public partial class MainPageViewModel : BaseViewModel
     }
     private bool CanShowAge()
     {
-        return personSelectedItem != null;
+        return PersonSelectedItem != null;
     }
 
     [RelayCommand(CanExecute = nameof(CanMakeOlder))]
     private void MakeOlder()
     {
         Age++;
-        personSelectedItem.Age = Age;
+        PersonSelectedItem.Age = Age;
     }
     private bool CanMakeOlder()
     {
-        return personSelectedItem != null;
+        return PersonSelectedItem != null;
     }
 
     [RelayCommand(CanExecute = nameof(CanDelete))]
     private void Delete()
     {
-        Persons.Remove(personSelectedItem ?? null);
+        Persons.Remove(PersonSelectedItem ?? null);
     }
     private bool CanDelete()
     {
-        return personSelectedItem != null && Persons.Count > 1;
+        return PersonSelectedItem != null && Persons.Count > 1;
     }
 
     // Command with parameter
