@@ -20,12 +20,9 @@ public partial class MainPageViewModel : BaseViewModel
     }
     #endregion
 
-
     #region PROPERTY
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(ShowAgeCommand))]
-    [NotifyCanExecuteChangedFor(nameof(MakeOlderCommand))]
-    [NotifyCanExecuteChangedFor(nameof(DeleteCommand))]
+    //[NotifyCanExecuteChangedFor(nameof(ShowAgeCommand), nameof(MakeOlderCommand), nameof(DeleteCommand))]
     Person personSelectedItem = null;
 
     partial void OnPersonSelectedItemChanging(Person value)
@@ -36,11 +33,11 @@ public partial class MainPageViewModel : BaseViewModel
 
 
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(AddCommand))]
+    //[NotifyCanExecuteChangedFor(nameof(AddCommand))]
     string name;
 
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(AddCommand))]
+    //[NotifyCanExecuteChangedFor(nameof(AddCommand))]
     int age;
     #endregion
 
@@ -67,10 +64,8 @@ public partial class MainPageViewModel : BaseViewModel
     {
         Shell.Current.DisplayAlert("AgeButtonClicked", $"{PersonSelectedItem.Name} er {PersonSelectedItem.Age}", "OK");
     }
-    private bool CanShowAge()
-    {
-        return PersonSelectedItem != null;
-    }
+    private bool CanShowAge() => PersonSelectedItem != null;
+
 
     [RelayCommand(CanExecute = nameof(CanMakeOlder))]
     private void MakeOlder()
@@ -78,20 +73,13 @@ public partial class MainPageViewModel : BaseViewModel
         Age++;
         PersonSelectedItem.Age = Age;
     }
-    private bool CanMakeOlder()
-    {
-        return PersonSelectedItem != null;
-    }
+    private bool CanMakeOlder() => PersonSelectedItem != null;
+    
 
     [RelayCommand(CanExecute = nameof(CanDelete))]
-    private void Delete()
-    {
-        Persons.Remove(PersonSelectedItem ?? null);
-    }
-    private bool CanDelete()
-    {
-        return PersonSelectedItem != null && Persons.Count > 1;
-    }
+    private void Delete() => Persons.Remove(PersonSelectedItem ?? null);
+    private bool CanDelete() => PersonSelectedItem != null && Persons.Count > 1;
+
 
     // Command with parameter
     [RelayCommand]
