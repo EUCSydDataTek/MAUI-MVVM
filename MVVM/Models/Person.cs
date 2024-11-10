@@ -1,6 +1,6 @@
 ﻿namespace MVVM.Models;
-public class Person
+public class User
 {
-    public string Name { get; set; }
-    public int Age { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 }

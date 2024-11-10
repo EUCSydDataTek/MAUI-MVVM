@@ -1,54 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:MVVM.Converters" 
-             xmlns:viewmodels="clr-namespace:MVVM.ViewModels" 
-             x:Class="MVVM.Views.MainPage">
+<ContentPage
+    x:Class="MVVM.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MVVM.ViewModels">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:AgeFormatConverter x:Key="ageFormatConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <ScrollView>
-        <VerticalStackLayout x:DataType="viewmodels:MainPageViewModel" 
-                             Margin="20" >
-            <Picker Title="Pick a Person"  
-                    ItemsSource="{Binding Persons}"
-                    ItemDisplayBinding="{Binding Name}"
-                    SelectedItem="{Binding PersonSelectedItem}"  />
-            <Entry Text="{Binding Name}" 
-                   Placeholder="Name" />
-            <Entry Text="{Binding Age, Converter={StaticResource ageFormatConverter}}"
-                   Placeholder="Age"/>
-
-            <Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="*,*" 
-                  RowSpacing="10" ColumnSpacing="10">
-
-                <Button Text="Clear" Command="{Binding ClearEntriesCommand}"
-                        Grid.Row="0" Grid.Column="0"/>
-
-                <Button Text="Save New Person" 
-                        Command="{Binding AddCommand}" 
-                        Grid.Row="0" Grid.Column="1"/>
-
-                <Button Text="Show Age" Command="{Binding ShowAgeCommand}" 
-                        Grid.Row="1" Grid.Column="0"/>
-
-                <Button Text="Make Older" Command="{Binding MakeOlderCommand}"
-                        Grid.Row="1" Grid.Column="1"/>
-
-                <Button Text="Delete Person" Command="{Binding DeleteCommand}" 
-                        Grid.Row="2" Grid.Column="0"/>
-
-                <Button Text="AnswerToLife" 
-                    Command="{Binding AnswerToLifeCommand}"
-                    CommandParameter="42"
-                    Grid.Row="2" Grid.Column="1"/>
-            </Grid>
-        </VerticalStackLayout>
-
-    </ScrollView>
+    <VerticalStackLayout Margin="20" Spacing="30">
+        <Entry
+            Placeholder="FirstName"
+            Text="{Binding FirstName}"
+            Visual="true" />
+        <Entry
+            Placeholder="LastName"
+            Text="{Binding LastName}"
+            Visual="true" />
+        <Label HorizontalOptions="Center" Text="{Binding FullName}" />
+        <Button Command="{Binding SyncUICommand}" Text="Sync UI with backend" />
+        <Button Command="{Binding GreetUserCommand}" Text="GreetUser" />
+    </VerticalStackLayout>
 
 </ContentPage>
