@@ -7,13 +7,13 @@ public partial class MainPageViewModel : ObservableObject
 {
     #region PROPERTIES
     [ObservableProperty]
-    //[NotifyPropertyChangedFor(nameof(FullName))]
-    //[NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
+    [NotifyPropertyChangedFor(nameof(FullName))]
+    [NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
     private string firstName;
 
     [ObservableProperty]
-    //[NotifyPropertyChangedFor(nameof(FullName))]
-    //[NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
+    [NotifyPropertyChangedFor(nameof(FullName))]
+    [NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
     private string lastName;
 
     public string FullName => $"{FirstName} {LastName}";
@@ -47,7 +47,7 @@ public partial class MainPageViewModel : ObservableObject
 
     partial void OnFirstNameChanged(string value)
     {
-        Debug.WriteLine($"The lastName just changed to {value}");
+        Debug.WriteLine($"The firstName just changed to {value}");
     }
     #endregion
 }
