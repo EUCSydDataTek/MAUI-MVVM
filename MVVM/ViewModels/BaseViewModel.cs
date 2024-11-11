@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using static Android.Content.ClipData;
 
 namespace MVVM.ViewModels;
 public class BaseViewModel : INotifyPropertyChanged
