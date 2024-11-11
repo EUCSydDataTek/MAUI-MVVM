@@ -22,7 +22,7 @@ public partial class MainPageViewModel : BaseViewModel
 
     #region PROPERTY
     [ObservableProperty]
-    //[NotifyCanExecuteChangedFor(nameof(ShowAgeCommand), nameof(MakeOlderCommand), nameof(DeleteCommand))]
+    [NotifyCanExecuteChangedFor(nameof(ShowAgeCommand), nameof(MakeOlderCommand), nameof(DeleteCommand))]
     Person personSelectedItem = null;
 
     partial void OnPersonSelectedItemChanging(Person value)
@@ -33,11 +33,11 @@ public partial class MainPageViewModel : BaseViewModel
 
 
     [ObservableProperty]
-    //[NotifyCanExecuteChangedFor(nameof(AddCommand))]
+    [NotifyCanExecuteChangedFor(nameof(AddCommand))]
     string name;
 
     [ObservableProperty]
-    //[NotifyCanExecuteChangedFor(nameof(AddCommand))]
+    [NotifyCanExecuteChangedFor(nameof(AddCommand))]
     int age;
     #endregion
 
@@ -74,7 +74,7 @@ public partial class MainPageViewModel : BaseViewModel
         PersonSelectedItem.Age = Age;
     }
     private bool CanMakeOlder() => PersonSelectedItem != null;
-    
+
 
     [RelayCommand(CanExecute = nameof(CanDelete))]
     private void Delete() => Persons.Remove(PersonSelectedItem ?? null);
