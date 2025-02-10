@@ -9,12 +9,12 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     //[NotifyPropertyChangedFor(nameof(FullName))]
     //[NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
-    private string firstName;
+    public partial string FirstName { get; set; }
 
     [ObservableProperty]
     //[NotifyPropertyChangedFor(nameof(FullName))]
     //[NotifyCanExecuteChangedFor(nameof(GreetUserCommand))]
-    private string lastName;
+    public partial string  LastName { get; set; }
 
     public string FullName => $"{FirstName} {LastName}";
     #endregion
