@@ -4,8 +4,8 @@ namespace MVVM.ViewModels;
 public partial class BaseViewModel : ObservableObject
 {
     [ObservableProperty]
-    bool isBusy = false;
+    public partial bool IsBusy { get; set; }
 
     [ObservableProperty]
-    string title = string.Empty;
+    public partial string Title { get; set; }
 }
