@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Extensions.Logging;
 using MVVM.ViewModels;
 using MVVM.Views;
 
@@ -19,6 +20,10 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
+
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
 
         return builder.Build();
     }
